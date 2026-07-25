@@ -170,6 +170,7 @@ export const LeadForm: React.FC = () => {
 
   return (
     <form
+      onSubmit={handleSubmit}
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
