@@ -102,8 +102,7 @@ export const LeadForm: React.FC = () => {
     return true;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setGeneralError(null);
 
     if (!validate()) {
@@ -170,7 +169,9 @@ export const LeadForm: React.FC = () => {
 
   return (
     <form
-      onSubmit={handleSubmit}
+      action="#"
+      method="POST"
+      onSubmit={(e) => e.preventDefault()}
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -317,7 +318,8 @@ export const LeadForm: React.FC = () => {
       {/* Signature CTA Button - Warm Accent Pop against cool background */}
       <div style={{ transform: "translateZ(16px)" }}>
         <button
-          type="submit"
+          type="button"
+          onClick={handleSubmit}
           disabled={isSubmitting}
           className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 via-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold text-sm shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 focus:outline-none focus:ring-2 focus:ring-amber-400/50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group mt-2"
         >
