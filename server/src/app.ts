@@ -8,6 +8,9 @@ import { errorHandler } from "./middleware/errorHandler";
 
 const app: Application = express();
 
+// Trust proxy for Render / Cloudflare / Vercel reverse proxies
+app.set("trust proxy", 1);
+
 // Security Headers
 app.use(helmet());
 

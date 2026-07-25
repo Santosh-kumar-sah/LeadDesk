@@ -2,7 +2,7 @@ import rateLimit from "express-rate-limit";
 
 export const leadRateLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 5, // Limit each IP to 5 lead submissions per window
+  max: 30, // Limit each IP to 30 lead submissions per window
   standardHeaders: true,
   legacyHeaders: false,
   message: {
