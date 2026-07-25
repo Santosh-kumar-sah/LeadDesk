@@ -11,7 +11,16 @@ export const requireAuth = (
   next: NextFunction
 ): void => {
   try {
-    const token = req.cookies?.token;
+    let token: string | undefined;
+
+    // Check Authorization header (Bearer <token>)
+    const authHeader = req.headers.authorization;
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      token = authHeader.split(" ")[1];
+    } else {
+      // Fallback to cookie
+      token = req.cookies?.token;
+    }
 
     if (!token) {
       res.status(401).json({

@@ -7,3 +7,12 @@ export const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+// Interceptor to attach Bearer token to all requests if present in localStorage
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});

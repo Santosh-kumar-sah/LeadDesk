@@ -33,7 +33,7 @@ export const login = async (
     });
 
     res.cookie("token", token, getCookieOptions());
-    res.status(200).json({ email: user.email });
+    res.status(200).json({ token, email: user.email });
   } catch (error) {
     next(error);
   }
