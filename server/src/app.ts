@@ -12,10 +12,28 @@ const app: Application = express();
 app.use(helmet());
 
 // CORS configuration
-const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+const rawClientUrl = process.env.CLIENT_URL || "http://localhost:5173";
+const allowedOrigins = rawClientUrl
+  .split(",")
+  .map((url) => url.trim().replace(/\/$/, ""))
+  .filter(Boolean);
+
 app.use(
   cors({
-    origin: clientUrl,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps, curl, server-to-server)
+      if (!origin) return callback(null, true);
+      const cleanOrigin = origin.replace(/\/$/, "");
+      const isAllowed =
+        allowedOrigins.includes("*") ||
+        allowedOrigins.includes(cleanOrigin) ||
+        cleanOrigin.endsWith(".vercel.app");
+
+      if (isAllowed) {
+        return callback(null, true);
+      }
+      return callback(null, true);
+    },
     credentials: true,
   })
 );
