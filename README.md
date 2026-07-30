@@ -3,6 +3,7 @@
 LeadDesk Mini is a production-grade lead-capture SaaS platform designed for high-converting lead intake and pipeline management. It features a public-facing landing page with real-time form validation and anti-spam protection, paired with a secure `/admin` management dashboard to view, search, paginate, and update lead statuses across the conversion pipeline.
 
 ---
+live link - https://leaddeskmini.vercel.app 
 
 ## 1. Project Overview
 
