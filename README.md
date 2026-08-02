@@ -143,6 +143,4 @@ Base Path: `/api`
 
 ---
 
-## 8. Video Walkthrough
 
-> TODO: add Loom link here
